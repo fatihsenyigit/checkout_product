@@ -23,7 +23,7 @@ const ProductBar = () => {
           <Form.Control type="url" placeholder="https://example.com/" />
         </Form.Group>
         <div className="text-center">
-          <Button variant="success" type="submit">
+          <Button variant="danger" type="submit">
             <FaCartArrowDown /> add to cart
           </Button>
         </div>
