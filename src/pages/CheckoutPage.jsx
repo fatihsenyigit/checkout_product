@@ -14,6 +14,7 @@ const CheckoutPage = () => {
         </Button>
         <div className="">{show ? <ProductBar /> : ""}</div>
         <ProductList />
+        <div></div>
       </div>
     </div>
   );
