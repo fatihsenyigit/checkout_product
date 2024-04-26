@@ -5,7 +5,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 const ProductBar = () => {
   return (
     <div>
-      <Form className="productBarForm">
+      <Form className="productBarForm fixed-input-size">
         <Form.Group className="mb-3" controlId="name">
           <Form.Label Label>Product Name</Form.Label>
           <Form.Control type="text" />

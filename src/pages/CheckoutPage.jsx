@@ -1,12 +1,20 @@
 import Button from "react-bootstrap/Button";
 import ProductBar from "../components/ProductBar";
+import { useState } from "react";
+import ProductList from "../components/ProductList";
 
 const CheckoutPage = () => {
+  const [show, setShow] = useState(true)
   return (
-    <div className="container ">
-      <h1 className="text-center mt-2 text-danger">Checkout Page</h1>
-      <Button className="btn-warning mb-5">hide product bar</Button>
-      <ProductBar/>
+    <div className="w-100">
+      <div className="mt-4 border border-danger container m-auto">
+        <h1 className="text-danger">Checkout Page</h1>
+        <Button onClick={() => setShow(!show)} className="btn-warning">
+          {show ? "hide product bar" : "show product bar"}
+        </Button>
+        <div className="">{show ? <ProductBar /> : ""}</div>
+        <ProductList />
+      </div>
     </div>
   );
 };
