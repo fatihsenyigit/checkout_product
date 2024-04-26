@@ -22,9 +22,11 @@ const ProductBar = () => {
           <Form.Label Label>Product Image</Form.Label>
           <Form.Control type="url" placeholder="https://example.com/" />
         </Form.Group>
-        <Button variant="success" type="submit">
-          <FaCartArrowDown /> add to cart
-        </Button>
+        <div className="text-center">
+          <Button variant="success" type="submit">
+            <FaCartArrowDown /> add to cart
+          </Button>
+        </div>
       </Form>
     </div>
   );
