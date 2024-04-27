@@ -23,9 +23,11 @@ const ProductBar = () => {
           <Form.Label>Product Image</Form.Label>
           <Form.Control type="url" placeholder="image URL" />
         </Form.Group>
-          <Button className="" variant="success" type="submit">
+        <div className="d-flex justify-content-center">
+          <Button variant="success" type="submit">
             <FaCartArrowDown /> add to cart
           </Button>
+        </div>
       </Form>
     </div>
   );
