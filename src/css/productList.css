@@ -1,7 +1,21 @@
-
-
 .productList-container {
-    border: 2px solid blue;
-    width: 400px;
-    padding: 1rem;
+  border: 2px solid blue;
+  width: 400px;
+  padding: 1rem;
+}
+
+.productListMain {
+  box-shadow: 1px 1px 5px 5px gray;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 1rem;
+}
+
+.eachProduct {
+  padding: 5px;
+  border-bottom: 1px solid red;
+}
+
+.productListTable {
+  padding: 1rem 3rem .5rem 3rem;
 }
