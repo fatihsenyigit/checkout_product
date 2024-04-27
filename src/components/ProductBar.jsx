@@ -7,20 +7,20 @@ const ProductBar = () => {
     <div>
       <Form className="productBarForm fixed-input-size">
         <Form.Group className="mb-3" controlId="name">
-          <Form.Label Label>Product Name</Form.Label>
+          <Form.Label>Product Name</Form.Label>
           <Form.Control type="text" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="price">
-          <Form.Label Label>Product Price</Form.Label>
+          <Form.Label>Product Price</Form.Label>
           <Form.Control type="number" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="quantity">
-          <Form.Label Label>Product Quantity</Form.Label>
+          <Form.Label>Product Quantity</Form.Label>
           <Form.Control type="number" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="image">
-          <Form.Label Label>Product Image</Form.Label>
-          <Form.Control type="url" placeholder="https://example.com/" />
+          <Form.Label>Product Image</Form.Label>
+          <Form.Control type="url" placeholder="image URL" />
         </Form.Group>
         <div className="text-center">
           <Button variant="danger" type="submit">

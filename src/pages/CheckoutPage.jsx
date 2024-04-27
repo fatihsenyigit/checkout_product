@@ -7,7 +7,7 @@ const CheckoutPage = () => {
   const [show, setShow] = useState(true);
   return (
     <div className="mt-4 border border-danger container d-flex justify-content-center">
-      <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="d-flex gap-3 flex-column justify-content-center align-items-center">
         <h1 className="text-danger">Checkout Page</h1>
         <Button onClick={() => setShow(!show)} className="btn-warning">
           {show ? "hide product bar" : "show product bar"}
