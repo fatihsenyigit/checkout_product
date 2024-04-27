@@ -1,11 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaCartArrowDown } from "react-icons/fa";
+import "../css/productBar.css"
 
 const ProductBar = () => {
   return (
     <div>
-      <Form className="productBarForm fixed-input-size">
+      <Form className="productBarForm">
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Product Name</Form.Label>
           <Form.Control type="text" />
@@ -22,11 +23,9 @@ const ProductBar = () => {
           <Form.Label>Product Image</Form.Label>
           <Form.Control type="url" placeholder="image URL" />
         </Form.Group>
-        <div className="text-center">
-          <Button variant="danger" type="submit">
+          <Button className="" variant="success" type="submit">
             <FaCartArrowDown /> add to cart
           </Button>
-        </div>
       </Form>
     </div>
   );

@@ -1,23 +1,24 @@
-
-import Table  from 'react-bootstrap/Table';
-import data from '../helpers/data'
+import Table from "react-bootstrap/Table";
+import data from "../helpers/data";
 import Button from "react-bootstrap/Button";
-
+import "../css/productList.css"
 
 const ProductList = () => {
   return (
-    <div >
-      {data.map((e)=>{return (
-        <div key={e.id} className='w-100'>
-          <img src="e.image" alt="" />
-          <div>
-            <div>{e.name}</div>
-            <div>{e.price}</div>
-            <div>{e.amount}</div>
-            <Button className="btn-danger">remove</Button>
+    <div className="productList-container">
+      {data.map((e) => {
+        return (
+          <div key={e.id}>
+            <img src="e.image" alt="" />
+            <div>
+              <div>{e.name}</div>
+              <div>{e.price}</div>
+              <div>{e.amount}</div>
+              <Button className="btn-danger">remove</Button>
+            </div>
           </div>
-        </div>
-      );})}
+        );
+      })}
       <Table>
         <tbody>
           <tr>
@@ -39,7 +40,7 @@ const ProductList = () => {
         </tbody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;
