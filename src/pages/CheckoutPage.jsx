@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import ProductBar from "../components/ProductBar";
 import { useState } from "react";
 import ProductList from "../components/ProductList";
-import { Row } from "react-bootstrap";
 
 const CheckoutPage = () => {
   const [show, setShow] = useState(true);

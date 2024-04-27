@@ -8,11 +8,6 @@
 
 
 .main {
-  border: 2px solid black;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-wrap: wrap;
+  
   gap: 1rem;
 }
