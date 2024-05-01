@@ -6,7 +6,7 @@ const data = [
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289661",
     price: 1100,
     dampingRate: 0.8,
-    amount: 1,
+    amount: 2,
   },
   {
     id: 2,
