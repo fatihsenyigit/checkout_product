@@ -1,42 +1,73 @@
 import Table from "react-bootstrap/Table";
-import data from "../helpers/data";
 import Button from "react-bootstrap/Button";
 import "../css/productList.css";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaRegSquareMinus } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductList = () => {
-  const [newData, setNewData] = useState(data);
-  const image1 = data[2].image;
-  const handleAmount = (productId, change) => {
-    setNewData((info) =>
-      info.map((item) =>
-        item.id === productId
-          ? { ...item, amount: Math.max(item.amount + change, 0) }
-          : item,
-      ),
-    );
-  };
-    const subTotal = Number((newData.reduce((acc, val) => acc + val.price * 0.8 * val.amount , 0)).toFixed(2));
-    const tax = Number((subTotal*0.18).toFixed(2))
-    const shipping = 25
-    const total = Number((subTotal+ tax+ shipping).toFixed(2))
+  const [newData, setNewData] = useState();
 
-    const handleRemove = (item) => {
-      setNewData(newData.filter((info)=> info!==item))
+  const getProducts = async () => {
+    try {
+      const res = await axios(process.env.REACT_APP_URL);
+      setNewData(res.data);
+    } catch (error) {
+      console.log(error);
     }
-  
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const handleAmount = async(productId, change) => {
+
+    const productAmount = newData?.filter((item)=> item.id === productId)[0].amount
+    const editAmount = Math.max(productAmount + change, 0)
+    const editObject = {'amount':editAmount}
+    try {
+      await axios.put(`${process.env.REACT_APP_URL}/${productId}`,editObject)
+    } catch (error) {
+      console.log(error)
+    }
+    getProducts()
+    // setNewData((info) =>
+    //   info.map((item) =>
+    //     item.id === productId
+    //       ? { ...item, amount: Math.max(item.amount + change, 0) }
+    //       : item,
+    //   ),
+    // );
+  };
+  const subTotal = Number(
+    newData
+      ?.reduce((acc, val) => acc + val.price * 0.8 * val.amount, 0)
+      ?.toFixed(2),
+  );
+  const tax = Number((subTotal * 0.18)?.toFixed(2));
+  const shipping = subTotal === 0? 0:25;
+  const total = Number((subTotal + tax + shipping)?.toFixed(2));
+
+  const handleRemove = async (item) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_URL}/${item.id}`);
+    } catch (error) {
+      console.log(error);
+    }
+    getProducts();
+  };
 
   return (
     <div className="productList-container">
-      {newData.length === 0 ? (
+      {newData?.length === 0 ? (
         "there is no product to show"
       ) : (
         <>
           <div className="productListMain">
-            {newData.map((e) => {
+            {newData?.map((e) => {
               return (
                 <div
                   className="d-flex flex-column gap-1 eachProduct"
@@ -46,7 +77,7 @@ const ProductList = () => {
                     className="d-flex justify-content-center
               "
                   >
-                    <img src={image1} alt="" />
+                    <img src={e.image} alt="" />
                   </div>
 
                   <div>{e.name}</div>
