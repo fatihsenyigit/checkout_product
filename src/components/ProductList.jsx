@@ -4,36 +4,20 @@ import "../css/productList.css";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FaRegSquareMinus } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
-const ProductList = () => {
-  const [newData, setNewData] = useState();
-
-  const getProducts = async () => {
+const ProductList = ({ getProducts, newData }) => {
+  const handleAmount = async (productId, change) => {
+    const productAmount = newData?.filter((item) => item.id === productId)[0]
+      .amount;
+    const editAmount = Math.max(productAmount + change, 0);
+    const editObject = { amount: editAmount };
     try {
-      const res = await axios(process.env.REACT_APP_URL);
-      setNewData(res.data);
+      await axios.put(`${process.env.REACT_APP_URL}/${productId}`, editObject);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  useEffect(() => {
     getProducts();
-  }, []);
-
-  const handleAmount = async(productId, change) => {
-
-    const productAmount = newData?.filter((item)=> item.id === productId)[0].amount
-    const editAmount = Math.max(productAmount + change, 0)
-    const editObject = {'amount':editAmount}
-    try {
-      await axios.put(`${process.env.REACT_APP_URL}/${productId}`,editObject)
-    } catch (error) {
-      console.log(error)
-    }
-    getProducts()
     // setNewData((info) =>
     //   info.map((item) =>
     //     item.id === productId
@@ -48,7 +32,7 @@ const ProductList = () => {
       ?.toFixed(2),
   );
   const tax = Number((subTotal * 0.18)?.toFixed(2));
-  const shipping = subTotal === 0? 0:25;
+  const shipping = subTotal === 0 ? 0 : 25;
   const total = Number((subTotal + tax + shipping)?.toFixed(2));
 
   const handleRemove = async (item) => {
